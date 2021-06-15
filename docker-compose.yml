@@ -1,0 +1,62 @@
+services:
+
+  quarkus-service:
+    build:
+      context: .
+      dockerfile: src/main/docker/Dockerfile
+    image: vanjalee/dedalus-fhir-manager:jvm
+    mem_limit: 128m
+    environment:
+      - QUARKUS_DATASOURCE_URL=jdbc:mysql://quarkus-db:3406/dedalus
+    ports:
+      - "8080:8080"
+    depends_on:
+      quarkus-db:
+        condition: service_healthy
+    networks:
+      - quarkus
+
+  quarkus-db:
+    image: mysql:latest
+    container_name: "quarkus-db"
+    restart: always
+    environment:
+       MYSQL_DATABASE: "dedalus"
+       MYSQL_USER: "dedalus"
+       MYSQL_PASSWORD: "dedalus"
+       MYSQL_ROOT_PASSWORD: "admin"
+       MYSQL_TCP_PORT: 3406
+    ports:
+      - '3406:3406'
+    expose:
+      - '3406'
+    healthcheck:
+      test: mysqladmin ping -h localhost -u $$MYSQL_USER --password=$$MYSQL_PASSWORD
+    volumes:
+      - quarkus-db:/var/lib/mysql
+      - ./quarkus-db/dedalus.sql:/docker-entrypoint-initdb.d/dedalus.sql
+    networks:
+      - quarkus
+
+  phpmyadmin:
+    depends_on:
+      - quarkus-db
+    image: phpmyadmin/phpmyadmin
+    restart: always
+    ports:
+      - '9000:80'
+    environment:
+      PMA_HOST: quarkus-db
+      PMA_PORT: 3406
+      MYSQL_USER: "dedalus"
+      MYSQL_PASSWORD: "dedalus"
+      MYSQL_ROOT_PASSWORD: "admin"
+    networks:
+      - quarkus
+
+networks:
+  quarkus:
+    driver: bridge
+
+volumes:
+  quarkus-db:
