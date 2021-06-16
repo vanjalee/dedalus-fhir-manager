@@ -21,7 +21,7 @@ public class UnknownFhirResourceExceptionMapper implements ExceptionMapper<Unkno
 
 	@Override
 	public Response toResponse(UnknownFhirResourceException exception) {
-		
+
 		log.error(exception.getMessage(), exception.getCause());
 		return Response.status(HttpStatus.UNPROCESSABLE_ENTITY).entity(exception.getMessage()).build();
 	}

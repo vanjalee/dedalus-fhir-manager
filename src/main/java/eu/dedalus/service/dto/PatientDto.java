@@ -17,27 +17,27 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class PatientDto {
-	
+
 	private String resourceType;
-	
+
 	private String id;
-			
+
 	private List<IdentifierDto> identifier;
-	
+
 	private boolean active;
-	
+
 	private List<NameDto> name;
-	
+
 	private List<TelecomDto> telecom;
-	
+
 	private String gender;
-	
+
 	private LocalDate birthDate;
-		
+
 	private List<AddressDto> address;
-	
+
 	private List<ContactDto> contact;
-	
+
 	private ManagingOrganizationDto managingOrganization;
-	
+
 }

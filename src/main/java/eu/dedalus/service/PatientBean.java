@@ -62,7 +62,6 @@ public class PatientBean {
 	 * @param fhirUrl as a location of the patient on the Fhir server
 	 * @return HTTP Response holding info about the operation (status code)
 	 */
-	@Transactional(Transactional.TxType.REQUIRES_NEW)
 	public Response transferPatient(String fhirUrl) {
 
 		if (StringUtils.isBlank(fhirUrl)) {
@@ -72,14 +71,7 @@ public class PatientBean {
 		PatientDto patientDto = fhirPatientBean.getPatient(fhirUrl);
 
 		if (patientDto != null) {
-			Optional<Patient> patientOpt = patientRepository.findByFhirUrl(fhirUrl);
-			if (patientOpt.isPresent()) {
-				log.debug("Updating patient data with the fresh value from Fhir server");
-				patientRepository.save(PatientBuilder.updatePatient(patientOpt.get(), patientDto));
-			} else {
-				log.debug("Saving new patient data transfered from the Fhir server");
-				patientRepository.save(PatientBuilder.createPatient(fhirUrl, patientDto));
-			}
+			saveOrUpdatePatient(fhirUrl, patientDto);
 			return Response.status(Status.OK).build();
 		}
 
@@ -107,5 +99,17 @@ public class PatientBean {
 		}
 
 		return Response.status(Status.NOT_FOUND).build();
+	}
+	
+	@Transactional(Transactional.TxType.REQUIRES_NEW)
+	private void saveOrUpdatePatient(String fhirUrl, PatientDto patientDto) {
+		Optional<Patient> patientOpt = patientRepository.findByFhirUrl(fhirUrl);
+		if (patientOpt.isPresent()) {
+			log.debug("Updating patient data with the fresh value from Fhir server");
+			patientRepository.save(PatientBuilder.updatePatient(patientOpt.get(), patientDto));
+		} else {
+			log.debug("Saving new patient data transfered from the Fhir server");
+			patientRepository.save(PatientBuilder.createPatient(fhirUrl, patientDto));
+		}
 	}
 }

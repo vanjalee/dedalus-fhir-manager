@@ -16,8 +16,8 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @JsonIgnoreProperties(ignoreUnknown = false)
 public class FhirUrl {
-	
-    @NotBlank(message = "url may not be blank")
+
+	@NotBlank(message = "url may not be blank")
 	private String url;
 
 }

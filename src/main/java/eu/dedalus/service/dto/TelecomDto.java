@@ -14,14 +14,14 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class TelecomDto {
-	
+
 	private String use;
-	
+
 	private String system;
-	
+
 	private String value;
-	
+
 	private Integer rank;
-	
+
 	private PeriodDto period;
 }

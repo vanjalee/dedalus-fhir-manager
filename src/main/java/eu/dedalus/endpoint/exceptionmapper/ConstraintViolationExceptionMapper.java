@@ -16,13 +16,11 @@ import eu.dedalus.endpoint.util.Headers;
 @Provider
 public class ConstraintViolationExceptionMapper implements ExceptionMapper<ConstraintViolationException> {
 
-    @Override
-    public Response toResponse(ConstraintViolationException exception) {
-        
-    	String reason = exception.getConstraintViolations()
-    			.stream()
-    			.map(ConstraintViolation::getMessage)
-    			.collect(Collectors.joining(" and "));
-        return Response.status(Response.Status.BAD_REQUEST).header(Headers.REASON, reason).build();
-    }
+	@Override
+	public Response toResponse(ConstraintViolationException exception) {
+
+		String reason = exception.getConstraintViolations().stream().map(ConstraintViolation::getMessage)
+				.collect(Collectors.joining(" and "));
+		return Response.status(Response.Status.BAD_REQUEST).header(Headers.REASON, reason).build();
+	}
 }

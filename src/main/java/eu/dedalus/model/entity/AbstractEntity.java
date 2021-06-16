@@ -28,12 +28,12 @@ public abstract class AbstractEntity {
 	@GenericGenerator(name = "system-uuid", strategy = "uuid2")
 	protected String id;
 
-    @Column(name = "created", nullable = false)
+	@Column(name = "created", nullable = false)
 	private LocalDateTime created;
 
 	@PrePersist
 	protected void onCreate() {
 		created = LocalDateTime.now();
 	}
-	
+
 }

@@ -16,17 +16,17 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class ContactDto {
-	
+
 	private List<RelationshipDto> relationship;
-	
+
 	private NameDto name;
-	
+
 	private List<TelecomDto> telecom;
-	
+
 	private AddressDto address;
-	
+
 	private String gender;
-	
+
 	private PeriodDto period;
-	
+
 }

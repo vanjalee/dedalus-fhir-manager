@@ -14,7 +14,7 @@ import eu.dedalus.model.entity.Patient;
 public interface PatientRepository extends JpaRepository<Patient, String> {
 
 	Optional<Patient> findByFhirUrl(String fhirUrl);
-	
+
 	boolean existsByFhirUrl(String fhirUrl);
 
 }

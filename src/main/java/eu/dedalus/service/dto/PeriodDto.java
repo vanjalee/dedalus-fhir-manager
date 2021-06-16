@@ -14,9 +14,9 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class PeriodDto {
-	
+
 	private String start;
-	
+
 	private String end;
-	
+
 }

@@ -19,7 +19,7 @@ public enum Gender {
 	}
 
 	public static Gender fromValue(String value) {
-		
+
 		if (StringUtils.isBlank(value)) {
 			return null;
 		}

@@ -21,7 +21,7 @@ public class FhirResourceTransferExceptionMapper implements ExceptionMapper<Fhir
 
 	@Override
 	public Response toResponse(FhirResourceTransferException exception) {
-		
+
 		log.error(exception.getMessage(), exception.getCause());
 		return Response.status(HttpStatus.UNPROCESSABLE_ENTITY).entity(exception.getMessage()).build();
 	}

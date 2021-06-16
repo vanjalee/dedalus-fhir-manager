@@ -6,12 +6,12 @@ package eu.dedalus.service.exception;
 public class FhirClientCreationException extends RuntimeException {
 
 	private static final long serialVersionUID = 2472376757017843125L;
-	
+
 	private static final String MESSAGE = "Error during creation of Fhir client and its web target";
 
 	public FhirClientCreationException() {
-        super(MESSAGE);
-    }
+		super(MESSAGE);
+	}
 
 	public FhirClientCreationException(String message, Throwable cause) {
 		super(message, cause);

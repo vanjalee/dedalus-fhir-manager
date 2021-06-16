@@ -14,17 +14,17 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class IdentifierDto {
-	
+
 	private String use;
-	
+
 	private TypeDto type;
-	
+
 	private String system;
-	
+
 	private String value;
-	
+
 	private PeriodDto period;
-	
+
 	private AssignerDto assigner;
-	
+
 }

@@ -16,23 +16,23 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class AddressDto {
-	
+
 	private String use;
-	
+
 	private String type;
-	
+
 	private String text;
-	
+
 	private List<String> line;
-	
+
 	private String city;
-	
+
 	private String district;
-	
+
 	private String state;
-	
+
 	private String postalCode;
-	
+
 	private PeriodDto period;
-	
+
 }

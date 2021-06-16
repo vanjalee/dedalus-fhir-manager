@@ -30,16 +30,16 @@ import lombok.NoArgsConstructor;
 @EqualsAndHashCode(callSuper = true)
 @JsonInclude(JsonInclude.Include.NON_EMPTY)
 public class Patient extends AbstractEntity {
-	
+
 	@Column(name = "fhir_url", nullable = false, unique = true)
 	private String fhirUrl;
-	
-	@OneToMany(cascade=CascadeType.ALL, fetch = FetchType.EAGER, orphanRemoval = true)
+
+	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, orphanRemoval = true)
 	private List<HumanName> names = new ArrayList<>();
-	
-    @Enumerated(EnumType.STRING)
-    private Gender gender;
-    
-    private LocalDate birthday;
-	
+
+	@Enumerated(EnumType.STRING)
+	private Gender gender;
+
+	private LocalDate birthday;
+
 }

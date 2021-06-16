@@ -14,8 +14,8 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class CodingDto {
-	
+
 	private String system;
-	
+
 	private String code;
 }

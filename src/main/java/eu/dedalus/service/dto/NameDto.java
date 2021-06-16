@@ -16,17 +16,17 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class NameDto {
-	
+
 	private String use;
-	
+
 	private String family;
-	
+
 	private List<String> given;
-	
+
 	private List<String> prefix;
-	
+
 	private List<String> suffix;
-	
+
 	private PeriodDto period;
-		
+
 }

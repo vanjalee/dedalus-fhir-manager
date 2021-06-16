@@ -13,9 +13,9 @@ public enum HttpStatus implements Response.StatusType {
 	UNPROCESSABLE_ENTITY(422, "Unprocessable Entity");
 
 	private final int statusCode;
-	
+
 	private final String reasonPhrase;
-	
+
 	private final Family family;
 
 	private HttpStatus(int statusCode, String reasonPhrase) {

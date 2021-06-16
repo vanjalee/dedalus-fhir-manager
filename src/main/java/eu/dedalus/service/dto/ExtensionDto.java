@@ -16,10 +16,10 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class ExtensionDto {
-	
+
 	private String url;
-	
+
 	private LocalDateTime valueDateTime;
-	
+
 	private String valueString;
 }

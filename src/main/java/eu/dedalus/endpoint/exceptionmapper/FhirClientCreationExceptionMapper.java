@@ -21,7 +21,7 @@ public class FhirClientCreationExceptionMapper implements ExceptionMapper<FhirCl
 
 	@Override
 	public Response toResponse(FhirClientCreationException exception) {
-		
+
 		log.error(exception.getMessage(), exception.getCause());
 		return Response.status(Status.BAD_REQUEST).entity(exception.getMessage()).build();
 	}

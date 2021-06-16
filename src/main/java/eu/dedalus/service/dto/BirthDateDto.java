@@ -16,7 +16,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class BirthDateDto {
-	
+
 	private List<ExtensionDto> extension;
-	
+
 }

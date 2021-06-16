@@ -14,7 +14,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class ManagingOrganizationDto {
-	
+
 	private String reference;
-	
+
 }
