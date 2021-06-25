@@ -22,10 +22,10 @@ public class PatientResourceTest {
 	}
 
 	@Test
-	public void testPatientPostUnknown_returns422() {
+	public void testPatientPostUnknown_returns404() {
 
 		RestAssured.given().body("http://hapi.fhir.org/baseR4/Patient/qweqweqweqweqweqweqweqweqweqweqwe").when()
-				.post(ENDPOINT_PATIENT).then().statusCode(422);
+				.post(ENDPOINT_PATIENT).then().statusCode(404);
 	}
 
 	@Test
